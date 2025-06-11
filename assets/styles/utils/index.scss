@@ -1,0 +1,15 @@
+@import 'variables';
+@import 'utils';
+@import 'breakpoints';
+
+.input-field {
+  width: 100%;
+  padding: em(18) em(13) em(18) em(13);
+  border: em(1) solid #d3d3d3;
+  border-radius: em(3);
+  background-color: $color-white;
+
+  @include media-breakpoint-down(sm) {
+    padding: em(18) em(12);
+  }
+}

@@ -1,0 +1,191 @@
+{
+  "common": {
+    "button": "Register your interest",
+    "form": {
+      "header": "Let's Partner Up",
+      "country": "Country of residence",
+      "searchCountry": "Search country...",
+      "email": "Email",
+      "partner": "Program",
+      "name": "Name",
+      "phone": "Phone",
+      "partnerTypes": [
+        "Introducing Broker",
+        "Affiliate",
+        "Money Managers",
+        "Other"
+      ]
+    },
+    "error": {
+      "emailRequired": "Email is required",
+      "emailInvalid": "Please enter a valid email",
+      "nameRequired": "Name is required",
+      "nameTooShort": "Name must be at least 2 characters long",
+      "phoneRequired": "Phone is required",
+      "phoneInvalid": "Please enter a valid phone number"
+    }
+  },
+
+  "meta": {
+    "title": "Partner with SquaredFinancial",
+    "description": "Join SquaredFinancial's Partner Program and enjoy bonuses, unlimited instant rebates, tiered commissions, and 24/5 support. Trusted globally, licensed & regulated."
+  },
+
+  "alt": {
+    "logo": "squared logo",
+    "logo2": "SquaredFinancial Logo",
+    "arrow": "arrow",
+    "gamma": "gamma"
+  },
+
+  "heroSection": {
+    "title": "Get up to",
+    "exp": "in commission<br class='hidden-desktop' />&spreads",
+    "text": "\"SquaredFinancial leads the way with outstanding growth...\"",
+    "trust": "SquaredFinancial is rated <strong>Excellent</strong>",
+    "caption": "Awarded. Trusted. Recognized",
+    "tips": [
+      "Licensed & Regulated",
+      "Exclusive Bonuses, Perks & Loyalty Program for traders",
+      "Instant & Unlimited Rebates"
+    ]
+  },
+
+  "partnershipSection": {
+    "title": "Partnership that works",
+    "content": [
+      {
+        "title": "Introducing Brokers",
+        "content": "Spreads <br class='hidden-mobile' />& Commissions up to",
+        "percent": "60<sup>%</sup>"
+      },
+      {
+        "title": "Academies",
+        "content": "Monetize your students with exclusive broker deals, white-label tools, and partner-only benefits"
+      },
+      {
+        "title": "Money Managers",
+        "content": "MAM/PAMM, Copy Trading, Custom Allocations"
+      },
+      {
+        "title": "Pro Traders",
+        "content": "Tighter spreads, fast execution, real support"
+      }
+    ]
+  },
+
+  "qualitiesSection": {
+    "title": "Better conditions. More opportunities. No nonsense",
+    "cards": {
+      "0": "Tiered Commission & Quick Payouts",
+      "1": "Full Backoffice Access and Reporting",
+      "2": "Unlimited & Instant Rebates",
+      "3": "Dedicated Account Managers"
+    }
+  },
+
+  "specSection": {
+    "title": "Why SquaredFinancial",
+    "text": [
+      "<strong>years</strong> <br />of experience",
+      "Spreads from",
+      "<strong>pips</strong>",
+      "Leverage up to",
+      "execution speed",
+      "rated by traders",
+      "instruments",
+      "customer support"
+    ]
+  },
+
+  "tradersSection": {
+    "title": "Built for Traders",
+    "keys": ["Tailored perks", "Deposit Bonus", "Crypto", "Copy Trading"],
+    "content": [
+      {
+        "title": "Tailored perks for every Trader",
+        "text": [
+          "Live chat sessions with our technical analysts",
+          "Premium Success Manager",
+          "Fast and secure trading with VPS"
+        ]
+      },
+      {
+        "title": "Deposit and Withdraw with Crypto",
+        "text": [
+          "Trade in your real account, earn points, and redeem them for gifts or cash"
+        ]
+      },
+      {
+        "title": "Start with a 100% Deposit Bonus & 50% Redeposit Bonus",
+        "text": [
+          "100% of the value of your first deposit, 50% of subsequent deposits"
+        ],
+        "link": "Terms & Conditions",
+        "apply": "apply"
+      },
+      {
+        "title": "Gain the edge with Copy Trading",
+        "text": [
+          "Copy top-performing strategies from expert traders",
+          "Trade more assets and build a diversified portfolio"
+        ]
+      }
+    ]
+  },
+
+  "accountSection": {
+    "button": "Let's Partner Up Today"
+  },
+
+  "awardsSection": {
+    "title": "Don't just take our word for it",
+    "caption": "Internationally awarded for excellence",
+    "cards": {
+      "1": {
+        "title": "Best Trading Mobile App",
+        "text": "Pan Finance"
+      },
+      "2": {
+        "title": "Best Stock Provider",
+        "text": "Global Brands Magazine"
+      },
+      "3": {
+        "title": "Best Client Fund Security",
+        "text": "Global Brands Magazine"
+      },
+      "4": {
+        "title": "Best CFDs Broker",
+        "text": "AtoZ Markets"
+      },
+      "5": {
+        "title": "Most Reliable Broker",
+        "text": "World Finance"
+      }
+    }
+  },
+
+  "footer": {
+    "contacts": {
+      "copyright": "© SquaredFinancial 2025. All rights reserved.",
+      "findUs": "Find us on",
+      "address": "Commercial House 1, Office no 4, Eden Island, Mahe, Seychelles",
+      "contactUs": "Contact us"
+    },
+
+    "disclaimers": {
+      "1": {
+        "title": "Risk warning:",
+        "text": "Trading leveraged products involve a significant risk and can result in the loss of your invested capital."
+      },
+      "2": {
+        "title": "Disclaimers:",
+        "text": "The website is not intended to offering investment services to citizens of certain jurisdictions such as EU/EEA member states, UK, USA, Canada, Australia, New Zealand, FATF-listed countries including, among others, Iran, North Korea, and Myanmar (Burma). You must be 18 years old, or of legal age as determined in your country in order to register for an account."
+      },
+      "3": {
+        "title": "Legal:",
+        "text": "This website is operated by SQ Sey Ltd, a company authorised and regulated as a Securities Dealer by the Financial Services Authority of Seychelles with license number SD024. SQ Sey Ltd is part of the ‘SquaredFinancial’ group of companies which includes Squared Financial (CY) Limited, a Cyprus company authorised and regulated by Cyprus Securities and Exchange Commission with license number 329/17."
+      }
+    }
+  }
+}

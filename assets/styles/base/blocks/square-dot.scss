@@ -1,0 +1,11 @@
+.square-dot {
+  display: inline-block;
+  width: em(13);
+  height: em(13);
+  background-color: $color-red-600;
+
+  @include media-breakpoint-down(sm) {
+    width: em(6);
+    height: em(6);
+  }
+}

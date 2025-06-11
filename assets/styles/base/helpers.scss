@@ -1,0 +1,22 @@
+.container {
+  width: 100%;
+  max-width: em(1856);
+  padding: 0 em(130);
+  margin: 0 auto;
+
+  @include media-breakpoint-down(sm) {
+    padding: 0 em(20);
+  }
+}
+
+.hidden-desktop {
+  @include media-breakpoint-desktop {
+    display: none !important;
+  }
+}
+
+.hidden-mobile {
+  @include media-breakpoint-mobile {
+    display: none !important;
+  }
+}

@@ -1,0 +1,48 @@
+// colors
+$color-white: #ffffff;
+$color-black: #000000;
+
+// color black
+$color-black-1000: #040714;
+$color-black-980: #090c16;
+$color-black-900: #13151d;
+$color-black-850: #171717;
+$color-black-800: #1b1d25;
+
+// color grey
+$color-grey-100: #f7f7f7;
+$color-grey-200: #dbdbdb;
+$color-grey-300: #c5cbd5;
+$color-grey-400: #a6a6a6;
+$color-grey-500: #a3a3a3;
+$color-grey-600: #808080;
+$color-grey-700: #7e7e7e;
+
+// color green
+$color-green-500: #1cbe8e;
+
+// color red
+$color-red-600: #d30044;
+$color-red-700: #c30044;
+
+// paths
+$fonts-path: '/fonts';
+$images-path: '/images';
+
+// timing
+$time-fast: 150ms;
+$time-normal: 250ms;
+$time-slow: 350ms;
+
+// font
+$font-size-default: 16;
+$font-family-default-name: Inter;
+$font-family-default: $font-family-default-name, sans-serif;
+
+// font weights
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semi-bold: 600;
+$font-weight-bold: 700;
+$font-weight-extra-bold: 800;
