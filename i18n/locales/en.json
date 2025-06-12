@@ -14,15 +14,27 @@
         "Affiliate",
         "Money Managers",
         "Other"
-      ]
+      ],
+      "formError": {
+        "title": "An error occurred",
+        "text": "Please resubmit your information or contact our Customer Support.",
+        "button": "OK"
+      }
     },
     "error": {
       "emailRequired": "Email is required",
       "emailInvalid": "Please enter a valid email",
+      "emailRegistered": "The email address you have entered is already registered.",
+      
       "nameRequired": "Name is required",
       "nameTooShort": "Name must be at least 2 characters long",
       "phoneRequired": "Phone is required",
       "phoneInvalid": "Please enter a valid phone number"
+    },
+    "success": {
+      "title": "You Rock!",
+      "subtitle": "Thank you for your interest!",
+      "text": "We've received your submission and everything is set.<br />You can expect to hear from us within the next few hours via email, phone, or WhatsApp.<br />We look forward to working with you!"
     }
   },
 

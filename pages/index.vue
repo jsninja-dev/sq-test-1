@@ -1,12 +1,9 @@
 <script setup>
 import links from '@/constants/links';
 
-// const { t } = useI18n();
-// const button = computed(() => t('link.button'));
 
 const buttonLinks = computed(() => [links.LOGIN, links.REGISTER]);
 
-//<editor-fold desc="UTM">
 const { getUrlWithUtm, hasUtmParameters } = useUtm();
 
 onMounted(() => {
@@ -52,7 +49,13 @@ function addUtm() {
   &__wrapper {
     &--about {
       padding: 0;
-      background: linear-gradient(180deg, #FFF 0%, #F7F7F7 14.88%, #F7F7F7 87.67%, #FFF 100%);
+      background: linear-gradient(
+        180deg,
+        #fff 0%,
+        #f7f7f7 14.88%,
+        #f7f7f7 87.67%,
+        #fff 100%
+      );
     }
   }
 }

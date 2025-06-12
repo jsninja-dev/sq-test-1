@@ -28,12 +28,10 @@ function onContentSlideChange(swiper) {
 
 function onSwiperInit(swiper) {
   contentSwiper.value = swiper;
-  console.log('Content Swiper initialized:', swiper);
 }
 
 function onTagsSwiperInit(swiper) {
   tagsSwiper.value = swiper;
-  console.log('Tags Swiper initialized:', swiper);
 }
 
 function handleTagClick(index) {

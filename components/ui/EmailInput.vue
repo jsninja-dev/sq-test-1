@@ -5,6 +5,8 @@ const { t } = useI18n();
 
 interface Props {
   modelValue: string;
+ 
+status?: number;
 }
 
 const props = defineProps<Props>();
@@ -17,6 +19,21 @@ const inputRef = ref<HTMLInputElement | null>(null);
 const errorStr = ref('');
 
 const hasValue = computed(() => props.modelValue.length > 0);
+
+const statusIcon = computed(() => {
+  switch (props.status) {
+    case 1: // LOADING
+      return '/images/form/loading.svg';
+    case 2: // SUCCESS
+      return '/images/form/success.svg';
+    case 3: // ERROR
+      return '/images/form/error.svg';
+    default:
+      return '';
+  }
+});
+
+const showStatusIcon = computed(() => props.status !== undefined && props.status !== 0);
 
 const validate = () => {
   validateInput();
@@ -71,18 +88,27 @@ defineExpose({
         <span class="input-label__font">{{ $t('common.form.email') }}</span>
       </label>
 
-      <input
-        ref="inputRef"
-        v-model="inputValue"
-        type="email"
-        class="input-field input-field__font"
-        :class="{
-          'is-focused': isFocused,
-          'has-error': errorStr,
-        }"
-        @focus="handleFocus"
-        @blur="handleBlur"
-      />
+      <div class="input-container">
+        <input
+          ref="inputRef"
+          v-model="inputValue"
+          type="email"
+          class="input-field input-field__font"
+          :class="{
+            'is-focused': isFocused,
+            'has-error': errorStr,
+          }"
+          @focus="handleFocus"
+          @blur="handleBlur"
+        />
+        <img
+          v-if="showStatusIcon"
+          :src="statusIcon"
+          class="status-icon"
+          :class="{ 'is-loading': props.status === 1 }"
+          alt="status"
+        />
+      </div>
     </div>
     <span v-if="errorStr" class="error-message">{{ errorStr }}</span>
   </div>
@@ -91,6 +117,33 @@ defineExpose({
 <style scoped lang="scss">
 .input-wrapper {
   position: relative;
+}
+
+.input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.status-icon {
+  position: absolute;
+  right: em(13);
+  width: em(20);
+  height: em(20);
+  pointer-events: none;
+
+  &.is-loading {
+    animation: spin 1s linear infinite;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .input-field {

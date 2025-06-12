@@ -1,38 +1,74 @@
 <script setup>
-import { ref } from 'vue';
+import { useRegister } from '@/composables/useRegister';
+import { ref, watch } from 'vue';
 import links from '@/constants/links';
+import { useUtm } from '@/composables/useUtm';
+
+const EmailStatus = {
+  UNDEFINED: 0,
+  LOADING: 1,
+  SUCCESS: 2,
+  ERROR: 3,
+};
+
+const {
+  checkUser,
+  registerUser,
+  checkLoading,
+  registerLoading,
+  checkError,
+  registerError,
+} = useRegister();
 
 const { getUrlWithUtm, hasUtmParameters } = useUtm();
 
-const { t } = useI18n();
 const email = ref('');
 const isEmailValid = ref(false);
+const emailStatus = ref(EmailStatus.UNDEFINED);
+let emailCheckTimeout = null;
+
 const name = ref('');
 const isNameValid = ref(false);
 const phone = ref('');
 const isPhoneValid = ref(false);
-const countryCode = ref('+1');
 const partnerType = ref('');
 const country = ref('');
 
 const emailInputRef = ref(null);
 const nameInputRef = ref(null);
 const phoneInputRef = ref(null);
-const partnerTypeInputRef = ref(null);
 
-const handleSubmit = () => {
+// Watch for email changes and validate after 500ms of no typing
+watch(email, (newEmail) => {
+  if (emailCheckTimeout) {
+    clearTimeout(emailCheckTimeout);
+  }
+
+  if (newEmail && isEmailValid.value) {
+    emailCheckTimeout = setTimeout(async () => {
+      try {
+        emailStatus.value = EmailStatus.LOADING;
+        const result = await checkUser(newEmail);
+        emailStatus.value = result === 'success' ? EmailStatus.SUCCESS : EmailStatus.ERROR;
+      } catch (error) {
+        console.error('Email check failed:', error);
+        emailStatus.value = EmailStatus.ERROR;
+      }
+    }, 500);
+  } else {
+    emailStatus.value = EmailStatus.UNDEFINED;
+  }
+});
+
+const handleSubmit = async () => {
   // Trigger validation for all inputs
   emailInputRef.value?.validate();
   nameInputRef.value?.validate();
   phoneInputRef.value?.validate();
 
-  if (
-    isEmailValid.value &&
-    isNameValid.value &&
-    isPhoneValid.value
-  ) {
+  if (isEmailValid.value && isNameValid.value && isPhoneValid.value) {
     // Create URL with form data as parameters
-    let registerURL = getUrlWithUtm(links.REGISTER);
+    const registerURL = getUrlWithUtm(links.REGISTER);
     const params = new URLSearchParams({
       email: email.value,
       name: name.value,
@@ -41,10 +77,22 @@ const handleSubmit = () => {
       country: country.value,
     });
 
-    registerURL += `&${params.toString()}`;
+    const formData = {
+      email: '',
+      password: '',
+      firstName: '',
+      lastName: '',
+      phone: '',
+    };
 
-    // Open registration URL in a new tab
-    // window.open(registerURL, '_blank');
+    try {
+      const response = await register(formData);
+      // Handle successful registration
+      console.log('Registration successful:', response);
+    } catch (err) {
+      // Error is already handled in the composable
+      console.error('Registration failed:', err);
+    }
   }
 };
 </script>
@@ -68,14 +116,12 @@ const handleSubmit = () => {
       class="ui-form__name"
       @validation="isNameValid = $event"
     />
-    <UiCountrySelect
-      v-model="country"
-      class="ui-form__country"
-    />
+    <UiCountrySelect v-model="country" class="ui-form__country" />
     <UiEmailInput
       ref="emailInputRef"
       v-model="email"
       class="ui-form__email"
+      :status="emailStatus"
       @validation="isEmailValid = $event"
     />
     <UiPhoneInput

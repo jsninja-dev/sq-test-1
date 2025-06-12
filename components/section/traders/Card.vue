@@ -1,4 +1,6 @@
 <script setup>
+import links from '@/constants/links';
+
 const { tm, rt } = useI18n();
 
 function getTextArray(text) {
@@ -65,7 +67,7 @@ defineProps({
         </li>
       </ul>
       <div v-if="hasTNC" class="qualities-card__tnc">
-        <a href="#" class="qualities-card__link">
+        <a :href="links.TNC" target="_blank" class="qualities-card__link">
           <span class="qualities-card__font qualities-card__font--link">
             {{ $t('tradersSection.content.2.link') }}
           </span>

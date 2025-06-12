@@ -8,7 +8,6 @@ import seoMeta from './configs/seo-meta';
 
 const isDev = process.env.NODE_ENV === 'development';
 
-const serverUrl = import.meta.env.SERVER_URL;
 const clientUrl = import.meta.env.CLIENT_URL;
 
 let robotsRules = {};
@@ -43,16 +42,16 @@ if (isDev) {
   });
 }
 
-const baseURL = '/partner-program/';
+const baseURL = '/partner-program';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
 
   runtimeConfig: {
-    serverUrl,
+    apiToken: process.env.API_TOKEN,
     public: {
-      clientUrl,
+      apiBaseUrl: process.env.API_BASE_URL,
     },
   },
 
