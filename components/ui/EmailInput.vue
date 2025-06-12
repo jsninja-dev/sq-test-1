@@ -180,6 +180,7 @@ defineExpose({
   background: white;
   padding: 0 em(4);
   color: $color-grey-500;
+  z-index: 1;
 
   &__font {
     font-size: em(18);

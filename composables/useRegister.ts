@@ -24,7 +24,7 @@ export const useRegister = () => {
     checkError.value = null;
 
     try {
-      const response = await useRequest('/register/check', {
+      const response = await $fetch('/api/register/check', {
         method: 'POST',
         body: data,
       });
@@ -42,7 +42,7 @@ export const useRegister = () => {
     registerError.value = null;
 
     try {
-      const response = await useRequest('/register/register', {
+      const response = await $fetch('/api/register/register', {
         method: 'POST',
         body: data,
       });
