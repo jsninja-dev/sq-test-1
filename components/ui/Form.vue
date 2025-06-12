@@ -48,7 +48,7 @@ watch(email, (newEmail) => {
     emailCheckTimeout = setTimeout(async () => {
       try {
         emailStatus.value = EmailStatus.LOADING;
-        const result = await checkUser(newEmail);
+        const result = await checkUser({ email: newEmail });
         emailStatus.value = result === 'success' ? EmailStatus.SUCCESS : EmailStatus.ERROR;
       } catch (error) {
         console.error('Email check failed:', error);
