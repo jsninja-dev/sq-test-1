@@ -5,8 +5,7 @@ const { t } = useI18n();
 
 interface Props {
   modelValue: string;
- 
-status?: number;
+  status?: number;
 }
 
 const props = defineProps<Props>();
@@ -33,7 +32,9 @@ const statusIcon = computed(() => {
   }
 });
 
-const showStatusIcon = computed(() => props.status !== undefined && props.status !== 0);
+const showStatusIcon = computed(
+  () => props.status !== undefined && props.status !== 0,
+);
 
 const validate = () => {
   validateInput();

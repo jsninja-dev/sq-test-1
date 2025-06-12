@@ -1,5 +1,5 @@
 <script setup>
-import { useRegister } from '@/composables/useRegister';
+import { useAuth } from '@/composables/useAuth';
 import { ref, watch } from 'vue';
 import links from '@/constants/links';
 import { useUtm } from '@/composables/useUtm';
@@ -14,11 +14,9 @@ const EmailStatus = {
 const {
   checkUser,
   registerUser,
-  checkLoading,
-  registerLoading,
   checkError,
   registerError,
-} = useRegister();
+} = useAuth();
 
 const { getUrlWithUtm, hasUtmParameters } = useUtm();
 
@@ -48,8 +46,12 @@ watch(email, (newEmail) => {
     emailCheckTimeout = setTimeout(async () => {
       try {
         emailStatus.value = EmailStatus.LOADING;
-        const result = await checkUser({ email: newEmail });
-        emailStatus.value = result === 'success' ? EmailStatus.SUCCESS : EmailStatus.ERROR;
+        const response = await $fetch('/api/auth/check', {
+        method: 'POST',
+        body: { email: newEmail },
+      });
+        // const result = await checkUser({ email: newEmail });
+        // emailStatus.value = result === 'success' ? EmailStatus.SUCCESS : EmailStatus.ERROR;
       } catch (error) {
         console.error('Email check failed:', error);
         emailStatus.value = EmailStatus.ERROR;
@@ -202,3 +204,4 @@ const handleSubmit = async () => {
   }
 }
 </style>
+@/composables/useAuth
