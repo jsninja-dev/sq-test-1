@@ -26,6 +26,7 @@ const statusIcon = computed(() => {
     case 2: // SUCCESS
       return './images/form/success.svg';
     case 3: // ERROR
+      validateInput();
       return './images/form/error.svg';
     default:
       return '';
@@ -55,6 +56,10 @@ const validateInput = () => {
   } else {
     errorStr.value = '';
     emit('validation', true);
+  }
+  if (props.status === 3) {
+    errorStr.value = t('common.error.emailRegistered');
+    emit('validation', false);
   }
 };
 
