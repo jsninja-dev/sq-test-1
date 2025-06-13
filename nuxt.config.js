@@ -175,7 +175,7 @@ export default defineNuxtConfig({
         code: localeCodes.EN,
         language: 'en-US',
         file: 'en.json',
-      }
+      },
     ],
     detectBrowserLanguage: false,
     baseUrl: baseURL,
@@ -193,4 +193,10 @@ export default defineNuxtConfig({
   },
 
   compatibilityDate: '2025-02-21',
+
+  nitro: {
+    routeRules: {
+      '/api/**': { cors: true },
+    },
+  },
 });

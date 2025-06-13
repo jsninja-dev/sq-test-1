@@ -3,6 +3,7 @@ import { useAuth } from '@/composables/useAuth';
 import { ref, watch } from 'vue';
 import links from '@/constants/links';
 import { useUtm } from '@/composables/useUtm';
+import debounce from 'lodash/debounce';
 
 const EmailStatus = {
   UNDEFINED: 0,
@@ -11,19 +12,34 @@ const EmailStatus = {
   ERROR: 3,
 };
 
-const {
-  checkUser,
-  registerUser,
-  checkError,
-  registerError,
-} = useAuth();
+const { checkUser, registerUser } = useAuth();
 
 const { getUrlWithUtm, hasUtmParameters } = useUtm();
 
 const email = ref('');
 const isEmailValid = ref(false);
 const emailStatus = ref(EmailStatus.UNDEFINED);
-let emailCheckTimeout = null;
+
+// Create debounced email check function outside of watch
+const debouncedEmailCheck = debounce(async (emailToCheck) => {
+  try {
+    emailStatus.value = EmailStatus.LOADING;
+    const response = await checkUser({ email: emailToCheck });
+    emailStatus.value = response ? EmailStatus.SUCCESS : EmailStatus.ERROR;
+  } catch (error) {
+    // console.error('Email check failed:', error);
+    emailStatus.value = EmailStatus.ERROR;
+  }
+}, 500);
+
+// Watch for email changes and validate after 500ms of no typing
+watch(email, (newEmail) => {
+  if (newEmail && isEmailValid.value) {
+    debouncedEmailCheck(newEmail);
+  } else {
+    emailStatus.value = EmailStatus.UNDEFINED;
+  }
+});
 
 const name = ref('');
 const isNameValid = ref(false);
@@ -35,32 +51,6 @@ const country = ref('');
 const emailInputRef = ref(null);
 const nameInputRef = ref(null);
 const phoneInputRef = ref(null);
-
-// Watch for email changes and validate after 500ms of no typing
-watch(email, (newEmail) => {
-  if (emailCheckTimeout) {
-    clearTimeout(emailCheckTimeout);
-  }
-
-  if (newEmail && isEmailValid.value) {
-    emailCheckTimeout = setTimeout(async () => {
-      try {
-        emailStatus.value = EmailStatus.LOADING;
-        const response = await $fetch('/api/auth/check', {
-        method: 'POST',
-        body: { email: newEmail },
-      });
-        // const result = await checkUser({ email: newEmail });
-        // emailStatus.value = result === 'success' ? EmailStatus.SUCCESS : EmailStatus.ERROR;
-      } catch (error) {
-        console.error('Email check failed:', error);
-        emailStatus.value = EmailStatus.ERROR;
-      }
-    }, 500);
-  } else {
-    emailStatus.value = EmailStatus.UNDEFINED;
-  }
-});
 
 const handleSubmit = async () => {
   // Trigger validation for all inputs

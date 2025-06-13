@@ -22,11 +22,11 @@ const hasValue = computed(() => props.modelValue.length > 0);
 const statusIcon = computed(() => {
   switch (props.status) {
     case 1: // LOADING
-      return '/images/form/loading.svg';
+      return './images/form/loading.svg';
     case 2: // SUCCESS
-      return '/images/form/success.svg';
+      return './images/form/success.svg';
     case 3: // ERROR
-      return '/images/form/error.svg';
+      return './images/form/error.svg';
     default:
       return '';
   }
