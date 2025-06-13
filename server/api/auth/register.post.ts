@@ -31,5 +31,11 @@ export default defineEventHandler(async (event) => {
       status: 'success',
       data: 'response',
     };
-  } catch (error: any) {}
+  } catch (error: any) {
+    throw createError({
+      statusCode: 500,
+      message: 'Registration failed',
+      data: error?.response,
+    });
+  }
 });

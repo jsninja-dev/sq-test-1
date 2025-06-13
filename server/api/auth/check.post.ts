@@ -16,7 +16,7 @@ export default defineEventHandler(async (event) => {
     };
 
     const response = await $fetch<any[]>(
-      `${config.public.apiBaseUrl}/rest/users/new`,
+      `${config.public.apiBaseUrl}/rest/users`,
       {
         method: 'POST',
         body: body,

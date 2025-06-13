@@ -16,7 +16,7 @@ export const useAuth = () => {
       method: 'POST',
       body: data,
     });
-    return response.data;
+    return response.data ? response.data : false;
   };
 
   const registerUser = async (data: RegisterData) => {
